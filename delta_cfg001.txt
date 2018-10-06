@@ -1,0 +1,32 @@
+hostname device1
+!
+interface FastEthernet0
+ no ip address
+!
+interface FastEthernet1
+ no ip address
+!
+interface FastEthernet2
+ no ip address
+!
+interface FastEthernet3
+ no ip address
+!
+interface FastEthernet4
+ description *** LAN connection (don't change) ***
+ ip address 10.220.88.20 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface Vlan1
+ no ip address
+!
+access-list 10 permit 172.20.0.0 0.0.255.255
+!
+line vty 0 4
+ transport input ssh
+ access-class 10 in
+!
+line vty 5 8
+ transport input ssh
+ access-class 20 in

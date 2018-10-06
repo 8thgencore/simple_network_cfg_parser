@@ -1,0 +1,45 @@
+interface FastEthernet0/0.2 
+ description LAN 
+ encapsulation dot1Q 2 
+ ip address 192.168.125.254 255.255.255.0 
+ no ip redirects 
+ no ip proxy-arp 
+ ip nat inside 
+ ip virtual-reassembly 
+! 
+interface FastEthernet0/0.3 
+ description WAN 
+ encapsulation dot1Q 3 
+ ip address x.x.x.x 
+ no ip redirects 
+ no ip unreachables 
+ no ip proxy-arp 
+ ip nat outside 
+ ip virtual-reassembly 
+! 
+interface FastEthernet0/0.6 
+ description BigPod 
+ encapsulation dot1Q 6 
+ ip address 192.168.123.1 255.255.255.0 
+ no ip redirects 
+ no ip proxy-arp 
+ ip nat inside 
+ ip virtual-reassembly 
+ no cdp enable 
+!
+interface Vlan40
+ description DATA VLAN
+ ip address 192.168.1.1 255.255.255.0
+ no ip redirects
+!
+interface GigabitEthernet0/1
+ description CORPORATE TRUNK
+ switchport mode trunk
+ spanning-tree mode trunk
+!
+ip route 0.0.0.0 0.0.0.0 <isp-gw> 
+ip nat inside source list nat interface FastEthernet0/0.3 overload 
+!
+ip access-list extended nat 
+ permit ip 192.168.125.0 0.0.0.255 any 
+ permit ip 192.168.123.0 0.0.0.255 any

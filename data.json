@@ -1,0 +1,41 @@
+[
+    {
+        "name": "FastEthernet0/0.2",
+        "description": "LAN",
+        "encapsulation": "dot1Q 2",
+        "ipv4": "192.168.125.254 255.255.255.0",
+        "ip_redirects": "no ip redirects",
+        "ip_proxy_arp": "no ip proxy-arp",
+        "ip_nat": "inside"
+    },
+    {
+        "name": "FastEthernet0/0.3",
+        "description": "WAN",
+        "encapsulation": "dot1Q 3",
+        "ip_redirects": "no ip redirects",
+        "ip_unreachables": "no ip unreachables",
+        "ip_proxy_arp": "no ip proxy-arp",
+        "ip_nat": "outside"
+    },
+    {
+        "name": "FastEthernet0/0.6",
+        "description": "BigPod",
+        "encapsulation": "dot1Q 6",
+        "ipv4": "192.168.123.1 255.255.255.0",
+        "ip_redirects": "no ip redirects",
+        "ip_proxy_arp": "no ip proxy-arp",
+        "ip_nat": "inside"
+    },
+    {
+        "name": "Vlan40",
+        "description": "DATA VLAN",
+        "ipv4": "192.168.1.1 255.255.255.0",
+        "ip_redirects": "no ip redirects"
+    },
+    {
+        "name": "GigabitEthernet0/1",
+        "description": "CORPORATE TRUNK",
+        "mode": "trunk",
+        "stree_mode": "mode trunk"
+    }
+]
